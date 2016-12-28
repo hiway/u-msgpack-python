@@ -16,9 +16,12 @@ except ImportError:
     import uio as io
     from ucollections import OrderedDict, namedtuple
 
+try:
+    import microunit as unittest
+except ImportError:
+    import unittest
 
 import sys
-import unittest
 
 
 import umsgpack
