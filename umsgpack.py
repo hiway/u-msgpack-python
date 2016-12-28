@@ -905,9 +905,12 @@ def __init():
     compatibility = False
 
     # Auto-detect system float precision
-    if sys.float_info.mant_dig == 53:
-        _float_size = 64
-    else:
+    try:
+        if sys.float_info.mant_dig == 53:
+            _float_size = 64
+        else:
+            _float_size = 32
+    except AttributeError:
         _float_size = 32
 
     # Map packb and unpackb to the appropriate version
