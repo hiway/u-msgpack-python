@@ -7,12 +7,19 @@
 #   $ pypy test_umsgpack.py
 #   $ pypy3 test_umsgpack.py
 #
+try:
+    import struct
+    import io
+    from collections import OrderedDict, namedtuple
+except ImportError:
+    import ustruct as struct
+    import uio as io
+    from ucollections import OrderedDict, namedtuple
+
 
 import sys
-import struct
 import unittest
-import io
-from collections import OrderedDict, namedtuple
+
 
 import umsgpack
 
