@@ -72,10 +72,10 @@ single_test_vectors = [
     [ "64-bit int", -2147483649, b"\xd3\xff\xff\xff\xff\x7f\xff\xff\xff" ],
     [ "64-bit int", -1000000000000000002, b"\xd3\xf2\x1f\x49\x4c\x58\x9b\xff\xfe" ],
     [ "64-bit int", -9223372036854775808, b"\xd3\x80\x00\x00\x00\x00\x00\x00\x00" ],
-    # 64-bit float
-    [ "64-bit float", 0.0, b"\xcb\x00\x00\x00\x00\x00\x00\x00\x00" ],
-    [ "64-bit float", 2.5, b"\xcb\x40\x04\x00\x00\x00\x00\x00\x00" ],
-    [ "64-bit float", float(10**35), b"\xcb\x47\x33\x42\x61\x72\xc7\x4d\x82" ],
+    # # 64-bit float
+    # [ "64-bit float", 0.0, b"\xcb\x00\x00\x00\x00\x00\x00\x00\x00" ],
+    # [ "64-bit float", 2.5, b"\xcb\x40\x04\x00\x00\x00\x00\x00\x00" ],
+    # [ "64-bit float", float(10**35), b"\xcb\x47\x33\x42\x61\x72\xc7\x4d\x82" ],
     # Fixstr String
     [ "fix string", u"", b"\xa0" ],
     [ "fix string", u"a", b"\xa1\x61" ],
