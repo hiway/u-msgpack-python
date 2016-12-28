@@ -50,10 +50,17 @@ __version__ = "2.3.0"
 version = (2,3,0)
 "Module version tuple"
 
-import struct
-import collections
+try:
+    import struct
+    import collections
+    import io
+except ImportError:
+    import ustruct as struct
+    import uio as io
+    import ucollections as collections
+
 import sys
-import io
+
 
 ################################################################################
 ### Ext Class
