@@ -664,6 +664,16 @@ def _deep_list_to_tuple(obj):
     return obj
 
 def _unpack_map(code, fp, options):
+    def is_hashable(obj):
+        try:
+            return isinstance(obj, collections.Hashable)
+        except AttributeError:
+            try:
+                _ = hash(obj)
+                return True
+            except TypeError:
+                return False
+
     if (ord(code) & 0xf0) == 0x80:
         length = (ord(code) & ~0xf0)
     elif code == b'\xde':
@@ -681,7 +691,7 @@ def _unpack_map(code, fp, options):
         if isinstance(k, list):
             # Attempt to convert list into a hashable tuple
             k = _deep_list_to_tuple(k)
-        elif not isinstance(k, collections.Hashable):
+        elif not is_hashable(k):
             raise UnhashableKeyException("encountered unhashable key: %s, %s" % (str(k), str(type(k))))
         elif k in d:
             raise DuplicateKeyException("encountered duplicate key: %s, %s" % (str(k), str(type(k))))
