@@ -317,7 +317,7 @@ class TestUmsgpack(unittest.TestCase):
         for (name, obj, data) in composite_test_vectors:
             obj_repr = repr(obj)
             print("\tTesting %s: object %s" % (name, obj_repr if len(obj_repr) < 24 else obj_repr[0:24] + "..."))
-            self.assertEqual(umsgpack.unpackb(data), obj)
+            self.assertEqual(umsgpack.unpackb(data, use_ordered_dict=True), obj)
 
     def test_unpack_exceptions(self):
         for (name, data, exception) in unpack_exception_test_vectors:
